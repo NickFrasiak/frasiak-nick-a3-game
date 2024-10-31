@@ -14,8 +14,10 @@ public class Game
 
     Player player;
 
+    Pipes pipeOne;
+
     Color skyColor = new Color(0x42, 0xbf, 0xe8);
-    Color pipeColor = new Color(0xf7, 0x76, 0x22);
+    
 
     /// <summary>
     ///     Setup runs once before the game loop begins.
@@ -36,13 +38,7 @@ public class Game
 
         player.UpdatePosition();
         player.Render();
+        pipeOne.Render();
 
-        //Draw pipes
-        Draw.FillColor = pipeColor;
-        //bottom pipe
-
-        Draw.Rectangle(300, 350, 50, 350);
-        //top pipe
-        Draw.Rectangle(300, 0, 50, 250);
     }
 }
