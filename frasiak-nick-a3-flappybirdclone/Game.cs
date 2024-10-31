@@ -18,7 +18,7 @@ namespace Game10003
         /// </summary>
         public void Setup()
         {
-            Window.SetTitle("Flappy ");
+            Window.SetTitle("Flappy  ");
             Window.SetSize(800, 600);
         }
 
