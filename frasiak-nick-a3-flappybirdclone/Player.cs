@@ -12,6 +12,7 @@ public class Player
     Vector2 forceOfGravity = new Vector2(0, 10);
     int terminalVelocity = 200;
     int jumpHeight = 150;
+
     public Player()
     {
         position = new Vector2(100, 300);
@@ -19,6 +20,7 @@ public class Player
         velocity = new Vector2();
         color = Color.Green;
     }
+
     public void UpdatePosition()
     {
         if (velocity.Y <= terminalVelocity)
