@@ -27,6 +27,7 @@ public class Game
         Window.SetTitle("Flappy ");
         Window.SetSize(800, 600);
         player = new Player();
+        pipeOne = new Pipes();
     }
 
     /// <summary>
