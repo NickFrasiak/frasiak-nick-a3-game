@@ -7,18 +7,18 @@ public class Player
 {
     Vector2 position;
     Vector2 velocity;
-    float radius;
+    float size;
     Color color;
     Vector2 forceOfGravity = new Vector2(0, 10);
-    int terminalVelocity = 200;
-    int jumpHeight = 150;
+    int terminalVelocity = 250;
+    int jumpHeight = 200;
 
     public Player()
     {
         position = new Vector2(100, 300);
-        radius = 25;
+        size = 35;
         velocity = new Vector2();
-        color = Color.Green;
+        color = Color.Yellow;
     }
 
     public void UpdatePosition()
@@ -41,9 +41,12 @@ public class Player
         }
     }
 
+
     public void Render()
     {
         Draw.FillColor = color;
-        Draw.Circle(position, radius);
+        Draw.Square(position, size);
     }
+
+    
 }
