@@ -5,7 +5,7 @@ namespace Game10003;
 
 public class Player
 {
-    Vector2 position;
+    public Vector2 position;
     Vector2 velocity;
     float size;
     Color color;
@@ -41,8 +41,8 @@ public class Player
         }
     }
 
-
-    public void Render()
+    //draw player
+        public void Render()
     {
         Draw.FillColor = color;
         Draw.Square(position, size);

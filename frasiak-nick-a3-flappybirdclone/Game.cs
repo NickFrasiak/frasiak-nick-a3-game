@@ -13,9 +13,14 @@ public class Game
 {
 
     Player player;
-    Pipes pipeOne;
-    Pipes pipeTwo;
-    Pipes pipeThree;
+    Pipe pipeOne;
+    Pipe pipeTwo;
+    Pipe pipeThree;
+
+    Pipe[] pipes;
+
+    int amountOfPipes = 6;
+    int pipeSpacing = 150;
 
     Color skyColor = new Color(0x42, 0xbf, 0xe8);
     Color playerColor = new Color(0x68, 0x4d, 0x7f);
@@ -29,24 +34,38 @@ public class Game
         Window.SetTitle("Flappy ");
         Window.SetSize(800, 600);
         player = new Player();
-        pipeOne = new Pipes(300, 0);
-        pipeTwo = new Pipes(450, 1);
-        pipeThree = new Pipes(600, 2);
+
+
+        pipes = new Pipe[amountOfPipes];
+
+        // i starts at 0, loop thru until i 
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            pipes[i] = new Pipe(300 + ( pipeSpacing * i));
+        }
     }
+
+
 
     /// <summary>
     ///     Update runs every frame.
     /// </summary>
     public void Update()
     {
-        Window.ClearBackground(skyColor); 
+        Window.ClearBackground(skyColor);
 
         player.UpdatePosition();
         player.Render();
-        pipeOne.Render();
-        pipeTwo.Render();
-        pipeThree.Render();
+        //pipeOne.Render();
+        //pipeTwo.Render();
+        //pipeThree.Render();
 
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            pipes[i].UpdatePosition();
+            pipes[i].Render();
+
+        }
 
         //collision
         Vector2 playerPosition1;
@@ -54,9 +73,13 @@ public class Game
         Vector2 playerSize1;
         Vector2 pipeSize2;
 
-        pipeOne.UpdatePosition();
-        pipeTwo.UpdatePosition();
-        pipeThree.UpdatePosition();
+       // if (playerPosition < pipePosition + pipeSize2 && playerPosition > pipePosition) 
+
+        //pipeOne.UpdatePosition();
+        
+        
+        //pipeTwo.UpdatePosition();
+        //pipeThree.UpdatePosition();
 
 
 

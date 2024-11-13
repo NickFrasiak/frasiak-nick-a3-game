@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace Game10003;
 
-public class Pipes
+public class Pipe
 {
     Color pipeColor = new Color(0x91, 0x86, 0xc2);
 
@@ -19,10 +19,10 @@ public class Pipes
 
     int pipeType = 0;
 
-    public Pipes(float pipePosition, int type)
+    public Pipe(float pipePosition)
     {
         Xposition = pipePosition;
-        pipeType = type;
+        pipeType = Random.Integer(0, 3);
     }
 
     public void Render()
@@ -61,12 +61,20 @@ public class Pipes
 
     }
 
+    //Move pipes
     public void UpdatePosition()
     {
         float moveSpeed = 3f;
 
         Xposition -= moveSpeed;
-        
+
+        if (Xposition <= -50)
+        {
+            Xposition = 800;
+            pipeType = Random.Integer(0, 3);
+        }
+
+       // Console.WriteLine(Xposition);
 
     }
 }
