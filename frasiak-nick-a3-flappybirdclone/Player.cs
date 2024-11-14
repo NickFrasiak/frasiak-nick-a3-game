@@ -7,7 +7,7 @@ public class Player
 {
     public Vector2 position;
     Vector2 velocity;
-    float size;
+    public float size;
     Color color;
     Vector2 forceOfGravity = new Vector2(0, 10);
     int terminalVelocity = 250;
@@ -31,7 +31,7 @@ public class Player
         {
             velocity.Y = terminalVelocity;
         }
-        Console.WriteLine(velocity.Y);
+        //Console.WriteLine(velocity.Y);
         position += velocity * Time.DeltaTime;
 
         // If spacebar is pressed, set vel y to 0 then add jump height

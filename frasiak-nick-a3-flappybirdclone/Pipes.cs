@@ -8,7 +8,11 @@ public class Pipe
     Color pipeColor = new Color(0x91, 0x86, 0xc2);
 
     //collision arrays
-    float Xposition;
+    public float Xposition;
+
+    public Vector2 pipeGap = new Vector2(0,0);
+
+
     //                 top: x, y, bottom: x, y
     float[] typ1position = { 0, 50, 350, 50 };
     float[] typ2position = { 0, 50, 300, 50 };
@@ -22,6 +26,7 @@ public class Pipe
     public Pipe(float pipePosition)
     {
         Xposition = pipePosition;
+        pipeGap.X = pipePosition;
         pipeType = Random.Integer(0, 3);
     }
 
@@ -34,6 +39,7 @@ public class Pipe
         {
             //top pipe
             Draw.Rectangle(Xposition, 0, 50, 250);
+            pipeGap.Y = 250;
 
             //bottom pipe
             Draw.Rectangle(Xposition, 350, 50, 350);
@@ -43,6 +49,7 @@ public class Pipe
         {
             //top pipe
             Draw.Rectangle(Xposition, 0, 50, 200);
+            pipeGap.Y = 200;
 
             //bottom pipe
             Draw.Rectangle(Xposition, 300, 50, 300);
@@ -53,6 +60,7 @@ public class Pipe
         {
             //top pipe
             Draw.Rectangle(Xposition, 0, 50, 300);
+            pipeGap.Y = 300;
 
             //bottom pipe
             Draw.Rectangle(Xposition, 400, 50, 400);
@@ -68,9 +76,11 @@ public class Pipe
 
         Xposition -= moveSpeed;
 
+        pipeGap.X = Xposition;
+
         if (Xposition <= -50)
         {
-            Xposition = 800;
+            Xposition = 850;
             pipeType = Random.Integer(0, 3);
         }
 
