@@ -13,30 +13,26 @@ public class Game
 {
     bool isGameOver = false;
 
-
     Player player;
     Pipe pipeOne;
     Pipe pipeTwo;
     Pipe pipeThree;
-
     Pipe[] pipes;
 
     int amountOfPipes = 6;
     int pipeSpacing = 150;
 
-    Color skyColor = new Color(0x42, 0xbf, 0xe8);
+    Color skyColor = new Color(0x08, 0x0D, 0x5B);
     Color playerColor = new Color(0x68, 0x4d, 0x7f);
-
 
     /// <summary>
     ///     Setup runs once before the game loop begins.
     /// </summary>
     public void Setup()
     {
-        Window.SetTitle("Flappy ");
+        Window.SetTitle("Flappy Square");
         Window.SetSize(800, 600);
         player = new Player();
-
 
         pipes = new Pipe[amountOfPipes];
 
@@ -44,12 +40,10 @@ public class Game
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i] = new Pipe(300 + (pipeSpacing * i));
-
-
         }
     }
 
-
+    //game over screen
     void GameOver()
     {
         if (isGameOver)
@@ -58,7 +52,7 @@ public class Game
             Draw.Rectangle(0, 0, 800, 600);
 
             Text.Color = Color.Red;
-            Text.Draw("GAME OVER",265, 200);
+            Text.Draw("GAME OVER",300, 300);
         }
 
     }
@@ -70,26 +64,25 @@ public class Game
     {
         Window.ClearBackground(skyColor);
 
-
         player.UpdatePosition();
         player.Render();
         //pipeOne.Render();
         //pipeTwo.Render();
         //pipeThree.Render();
 
+       
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i].UpdatePosition();
             pipes[i].Render();
             Vector2 pipePosition2 = new Vector2(pipes[i].Xposition, 0);
 
-
-
             Vector2 playerPosition1 = player.position;
 
             float playerSize1 = player.size;
             Vector2 pipeSize2;
 
+            //Collision code
             float playerLeft = playerPosition1.X;
             float playerRight = playerPosition1.X + playerSize1;
             float playerTop = playerPosition1.Y;
@@ -121,34 +114,18 @@ public class Game
 
             if (doesOverlap && doesGapOverlap)
             {
-                Console.WriteLine("thug");
+           
             }
 
             else if (doesOverlap && !doesGapOverlap)
             {
                 isGameOver = true;
             }
-
-            Draw.FillColor = Color.Red;
-            Draw.Circle(pipeGapLeft, pipeGapTop, 10);
-            Draw.Circle(pipeGapRight, pipeGapTop, 10);
-            Draw.Circle(pipeGapLeft, pipeGapBottom, 10);
-            Draw.Circle(pipeGapRight, pipeGapBottom, 10);
-
-
-
+           
+            Text.Color = Color.White;
+            Text.Draw("Score:", 25, 550);
 
         }
-
         GameOver();
-
-
-
-
-
-
-
-
-
     }
 }

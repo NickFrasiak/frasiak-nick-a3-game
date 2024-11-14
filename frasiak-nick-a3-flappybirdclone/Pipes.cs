@@ -12,7 +12,6 @@ public class Pipe
 
     public Vector2 pipeGap = new Vector2(0,0);
 
-
     //                 top: x, y, bottom: x, y
     float[] typ1position = { 0, 50, 350, 50 };
     float[] typ2position = { 0, 50, 300, 50 };
@@ -32,7 +31,6 @@ public class Pipe
 
     public void Render()
     {
-
         //Draw pipes
         Draw.FillColor = pipeColor;
         if (pipeType == 0)
@@ -53,7 +51,6 @@ public class Pipe
 
             //bottom pipe
             Draw.Rectangle(Xposition, 300, 50, 300);
-
         }
 
         else if (pipeType == 2)
@@ -65,8 +62,6 @@ public class Pipe
             //bottom pipe
             Draw.Rectangle(Xposition, 400, 50, 400);
         }
-
-
     }
 
     //Move pipes
@@ -83,9 +78,6 @@ public class Pipe
             Xposition = 850;
             pipeType = Random.Integer(0, 3);
         }
-
-       // Console.WriteLine(Xposition);
-
     }
 }
 

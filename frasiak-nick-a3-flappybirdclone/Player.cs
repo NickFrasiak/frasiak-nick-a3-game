@@ -13,6 +13,7 @@ public class Player
     int terminalVelocity = 250;
     int jumpHeight = 200;
 
+    //draw player
     public Player()
     {
         position = new Vector2(100, 300);
@@ -21,8 +22,10 @@ public class Player
         color = Color.Yellow;
     }
 
+    
     public void UpdatePosition()
     {
+        //update velocity by gravity
         if (velocity.Y <= terminalVelocity)
         {
             velocity += forceOfGravity;
@@ -31,7 +34,7 @@ public class Player
         {
             velocity.Y = terminalVelocity;
         }
-        //Console.WriteLine(velocity.Y);
+        //apply gravity
         position += velocity * Time.DeltaTime;
 
         // If spacebar is pressed, set vel y to 0 then add jump height
@@ -41,7 +44,7 @@ public class Player
         }
     }
 
-    //draw player
+    //render player
         public void Render()
     {
         Draw.FillColor = color;
