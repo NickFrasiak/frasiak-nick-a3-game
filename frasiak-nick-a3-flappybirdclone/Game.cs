@@ -33,6 +33,7 @@ public class Game
         Window.SetSize(800, 600);
         player = new Player();
 
+        //call for pipes and stars
         pipes = new Pipe[amountOfPipes];
         stars = new Star[70];
 
@@ -60,7 +61,6 @@ public class Game
             Text.Draw("GAME OVER", 300, 300);
             Text.Draw($"SCORE: {score}", 300, 350);
         }
-
     }
 
     /// <summary>
@@ -70,12 +70,7 @@ public class Game
     {
         Window.ClearBackground(skyColor);
 
-
-        //pipeOne.Render();
-        //pipeTwo.Render();
-        //pipeThree.Render();
-
-
+        //render stars
         for (int cuurentStar = 0; cuurentStar < stars.Length; cuurentStar++)
         {
             stars[cuurentStar].Render();
@@ -121,7 +116,8 @@ public class Game
             bool doesOverlap = doesOverlapLeft && doesOverlapRight && doesOverlapTop && doesOverlapBottom;
 
             bool doesGapOverlap = doesGapLeft && doesGapRight && doesGapTop && doesGapBottom;
-
+            
+            //count score
             if (doesOverlap && doesGapOverlap)
             {
                 score++;
@@ -132,12 +128,8 @@ public class Game
                 isGameOver = true;
             }
 
-
             Text.Color = Color.White;
             Text.Draw($"Score: {score}", 25, 500);
-
-
-
         }
 
         player.UpdatePosition();

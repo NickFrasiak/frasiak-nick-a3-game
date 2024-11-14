@@ -24,6 +24,7 @@ public class Pipe
 
     public Pipe(float pipePosition)
     {
+        //randomly place pipes
         Xposition = pipePosition;
         pipeGap.X = pipePosition;
         pipeType = Random.Integer(0, 3);
@@ -64,9 +65,9 @@ public class Pipe
         }
     }
 
-    //Move pipes
     public void UpdatePosition()
     {
+        //move pipes / move speed of pipes
         float moveSpeed = 3f;
 
         Xposition -= moveSpeed;

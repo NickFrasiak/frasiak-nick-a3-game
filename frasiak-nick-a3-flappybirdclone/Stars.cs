@@ -11,6 +11,7 @@ public class Star
 
     public Star()
     {
+        //Randomly place star
         position = new Vector2(Random.Integer(0,800), Random.Integer(0, 600));
     }
 
