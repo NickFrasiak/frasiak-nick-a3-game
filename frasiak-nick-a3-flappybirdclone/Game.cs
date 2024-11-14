@@ -14,13 +14,12 @@ public class Game
     bool isGameOver = false;
 
     Player player;
-    Pipe pipeOne;
-    Pipe pipeTwo;
-    Pipe pipeThree;
     Pipe[] pipes;
+    Star[] stars;
 
     int amountOfPipes = 6;
     int pipeSpacing = 150;
+    int score = 0;
 
     Color skyColor = new Color(0x08, 0x0D, 0x5B);
     Color playerColor = new Color(0x68, 0x4d, 0x7f);
@@ -35,11 +34,17 @@ public class Game
         player = new Player();
 
         pipes = new Pipe[amountOfPipes];
+        stars = new Star[70];
 
         // i starts at 0, loop thru until i 
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i] = new Pipe(300 + (pipeSpacing * i));
+        }
+
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i] = new Star();
         }
     }
 
@@ -52,7 +57,8 @@ public class Game
             Draw.Rectangle(0, 0, 800, 600);
 
             Text.Color = Color.Red;
-            Text.Draw("GAME OVER",300, 300);
+            Text.Draw("GAME OVER", 300, 300);
+            Text.Draw($"SCORE: {score}", 300, 350);
         }
 
     }
@@ -70,7 +76,12 @@ public class Game
         //pipeTwo.Render();
         //pipeThree.Render();
 
-       
+
+        for (int cuurentStar = 0; cuurentStar < stars.Length; cuurentStar++)
+        {
+            stars[cuurentStar].Render();
+        }
+
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i].UpdatePosition();
@@ -114,16 +125,16 @@ public class Game
 
             if (doesOverlap && doesGapOverlap)
             {
-           
+                score++;
             }
 
             else if (doesOverlap && !doesGapOverlap)
             {
                 isGameOver = true;
             }
-           
+
             Text.Color = Color.White;
-            Text.Draw("Score:", 25, 550);
+            Text.Draw($"Score: {score}", 25, 550);
 
         }
         GameOver();
