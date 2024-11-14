@@ -70,8 +70,7 @@ public class Game
     {
         Window.ClearBackground(skyColor);
 
-        player.UpdatePosition();
-        player.Render();
+
         //pipeOne.Render();
         //pipeTwo.Render();
         //pipeThree.Render();
@@ -133,10 +132,17 @@ public class Game
                 isGameOver = true;
             }
 
+
             Text.Color = Color.White;
-            Text.Draw($"Score: {score}", 25, 550);
+            Text.Draw($"Score: {score}", 25, 500);
+
+
 
         }
+
+        player.UpdatePosition();
+        player.Render();
+
         GameOver();
     }
 }
